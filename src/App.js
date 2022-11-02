@@ -20,6 +20,7 @@ import ApiKeyContext from 'context/ApiKeyContext'
 import ClientContext from 'context/ClientContext'
 import Typography from 'components/Typography'
 import { MeiliSearch as Meilisearch } from 'meilisearch'
+import Hello from './pages/hello'
 
 import clientAgents from './version/client-agents'
 
@@ -219,6 +220,7 @@ const App = () => {
                       }
                     />
                     <Route path="/test" element={<span>test</span>} />
+                    <Route path="/hello" element={<Hello />} />
                   </Routes>
                 </Router>
               </Box>
