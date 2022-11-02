@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
 /* eslint-disable no-console */
 import React from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import styled from 'styled-components'
 import { InstantSearch } from 'react-instantsearch-dom'
 import { instantMeiliSearch as instantMeilisearch } from '@meilisearch/instant-meilisearch'
@@ -205,11 +206,21 @@ const App = () => {
                 display="flex"
                 flexDirection="column"
               >
-                {isMeilisearchRunning ? (
-                  <Content currentIndex={currentIndex} />
-                ) : (
-                  <NoMeilisearchRunning />
-                )}
+                <Router>
+                  <Routes>
+                    <Route
+                      path="/"
+                      element={
+                        isMeilisearchRunning ? (
+                          <Content currentIndex={currentIndex} />
+                        ) : (
+                          <NoMeilisearchRunning />
+                        )
+                      }
+                    />
+                    <Route path="/test" element={<span>test</span>} />
+                  </Routes>
+                </Router>
               </Box>
             </Body>
           </InstantSearch>
